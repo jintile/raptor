@@ -5,10 +5,6 @@
     "context": ".."
   },
   "runArgs": ["--privileged"],
-  "features": {
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {}
-  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -32,8 +28,9 @@
     "PYTHONDONTWRITEBYTECODE": "1"
   },
   "mounts": [
-    "source=${localWorkspaceFolder}/.env,target=/workspaces/raptor/.env,type=bind,consistency=cached",
-    "source=${localEnv:HOME}/.claude,target=/root/.claude,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.env,target=/workspaces/raptor/.env,type=bind,consistency=cached,readonly",
+    "source=C:\\Users\\johni\\.claude,target=/root/.claude,type=bind,consistency=cached,readonly",
+    "source=C:\\Users\\johni\\Fitness-App,target=/workspaces/Fitness-App,type=bind,consistency=cached,readonly"
   ],
   "postCreateCommand": "pip install -r .devcontainer/requirements-all-optional.txt && pip install -r requirements-dev.txt",
   "postStartCommand": "sudo sh -c 'echo 1 > /proc/sys/kernel/perf_event_paranoid 2>/dev/null || true'",
