@@ -98,7 +98,7 @@ def run_command_streaming(cmd: list, description: str) -> tuple[int, str, str]:
         stderr_thread.start()
 
         # Wait for process to complete
-        process.wait(timeout=1800)  # 30 minutes
+        process.wait(timeout=None)  # no timeout — run to completion
 
         # Wait for all output to be read
         stdout_thread.join()
@@ -497,7 +497,7 @@ Examples:
     # ---- Collect Semgrep results ----
     if semgrep_proc:
         try:
-            semgrep_stdout, semgrep_stderr = semgrep_proc.communicate(timeout=1800)
+            semgrep_stdout, semgrep_stderr = semgrep_proc.communicate(timeout=None)  # no timeout — run to completion
             rc = semgrep_proc.returncode
         except subprocess.TimeoutExpired:
             semgrep_proc.kill()
@@ -540,7 +540,7 @@ Examples:
     # ---- Collect CodeQL results ----
     if codeql_proc:
         try:
-            codeql_stdout, codeql_stderr = codeql_proc.communicate(timeout=1800)
+            codeql_stdout, codeql_stderr = codeql_proc.communicate(timeout=None)  # no timeout — run to completion
             rc = codeql_proc.returncode
         except subprocess.TimeoutExpired:
             codeql_proc.kill()
