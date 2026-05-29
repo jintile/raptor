@@ -169,7 +169,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 # JS PACKAGE MANAGERS (yarn replaced apt source removed above)
 # ============================================================================
 
-RUN npm install -g yarn pnpm
+RUN npm install -g yarn pnpm --force
 
 # ============================================================================
 # ENVIRONMENT CONFIGURATION

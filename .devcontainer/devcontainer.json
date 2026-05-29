@@ -30,9 +30,9 @@
   "mounts": [
     "source=${localWorkspaceFolder}/.env,target=/workspaces/raptor/.env,type=bind,consistency=cached,readonly",
     "source=C:\\Users\\johni\\.claude,target=/root/.claude,type=bind,consistency=cached,readonly",
-    "source=C:\\Users\\johni\\Fitness-App,target=/workspaces/Fitness-App,type=bind,consistency=cached,readonly"
+    "source=C:\\Users\\johni\\Development,target=/workspaces/Development,type=bind,consistency=cached,readonly"
   ],
-  "postCreateCommand": "pip install -r .devcontainer/requirements-all-optional.txt && pip install -r requirements-dev.txt",
+  "postCreateCommand": "pip install -r .devcontainer/requirements-all-optional.txt && pip install -r requirements-dev.txt && (grep -q 'source /workspaces/raptor/.env' ~/.bashrc || echo 'set -a; [ -f /workspaces/raptor/.env ] && source /workspaces/raptor/.env; set +a' >> ~/.bashrc)",
   "postStartCommand": "sudo sh -c 'echo 1 > /proc/sys/kernel/perf_event_paranoid 2>/dev/null || true'",
   "remoteUser": "vscode"
 }
